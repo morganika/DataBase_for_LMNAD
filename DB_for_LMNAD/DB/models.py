@@ -28,9 +28,8 @@ class Appliances(models.Model):
 
 
 class Measurable(models.Model):
-    measurable_parametrs = models.CharField('Название параметра', max_length=300)
-
-    # measurable_value = models.DecimalField('Значение', max_digits=19, decimal_places=10)
+    measurable_parametrs = models.CharField('Параметр', null=True, max_length=250)
+    measurable_value = models.CharField('Значение', null=True, max_length=250)
 
     def __str__(self):
         return self.measurable_parametrs
@@ -45,12 +44,14 @@ class Expirement(models.Model):
     source = models.OneToOneField(Source, null=True, on_delete=models.PROTECT, verbose_name='Источник')
     experiment_scheme = models.ImageField(upload_to='images/', verbose_name='Схема эксперимента')
     measurements = models.CharField('Размеры (метры)', max_length=100)
-    appliance = models.ForeignKey(Appliances, null=True, on_delete=models.PROTECT, verbose_name='Приборы')
+    appliance = models.ManyToManyField(Appliances, verbose_name='Приборы')
     places = models.CharField('Научный центр', max_length=250)
-    measurable = models.ForeignKey(Measurable, null=True, on_delete=models.PROTECT, verbose_name='Измеряемые параметры')
-    value = models.DecimalField(verbose_name='Значение', decimal_places=10, max_digits=30)
+    measurable = models.ManyToManyField(Measurable, verbose_name='Измеряемые параметры')
     configurate_liquid = models.CharField('Конфигурация жидкости', null=True, max_length=200)
     effects = models.CharField('Эффект', max_length=300)
+
+    def __str__(self):
+        return self.effects
 
     class Meta:
         verbose_name = 'Эксперимент'

@@ -1,5 +1,7 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
+from .models import Expirement
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    table_experiment = Expirement.objects.all()
+    return render(request, 'DB/homepage.html',{'table_experiment':table_experiment})

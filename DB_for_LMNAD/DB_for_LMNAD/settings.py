@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ul3sfuyu^y9#)r@crhza-$ns&h#o)(k$mp+gwzy1d*(mxip)$-'
+SECRET_KEY = 'ul3sfuyu^y9#)r@crhza-$ns&h#o)(k$mp+gwzy1d*(mxip)$-' #секрет, так можно взломать сайт
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [ #приложения, которые будут в нашем проектк
     'grappelli',
     'DB.apps.DbConfig',
     'django.contrib.admin',

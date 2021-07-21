@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('grappelli/', include('grappelli.urls')),
     path('', include('DB.urls')),
+    # path('internalwaves_table/', include('DB.urls')),
 ]
 
 if settings.DEBUG:

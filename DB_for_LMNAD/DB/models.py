@@ -49,6 +49,7 @@ class Expirement(models.Model):
     measurable = models.ManyToManyField(Measurable, verbose_name='Измеряемые параметры')
     configurate_liquid = models.CharField('Конфигурация жидкости', null=True, max_length=200)
     effects = models.CharField('Эффект', max_length=300)
+    measured_param = models.CharField('Измеряемые параметры', max_length=300, null=True)
 
     def __str__(self):
         return self.effects

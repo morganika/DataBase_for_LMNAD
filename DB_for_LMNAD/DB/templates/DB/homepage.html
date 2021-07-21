@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+</head>
+<html lang="en">
+<head>
+    <title>LMNAD</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="yandex-verification" content="814cc814a6791f9c" />
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-HzUaiJdCTIY/RL2vDPRGdEQHHahjzwoJJzGUkYjHVzTwXFQ2QN/nVgX7tzoMW3Ov" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/lmnad/style.css">
+
+    <!-- JS scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/lmnad/app.js"></script>
+    <script src="/static/lmnad/lang.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/shadowbox_js/shadowbox.css">
+    <script type="text/javascript" src="/static/shadowbox_js/shadowbox.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-left" href="/ru/">
+                <img class="logo_old" src="static/logo_comp.png" alt="LMNAD" width="120" height="44">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+              <li><a href="/ru/"> Главная </a></li>
+              <li><a href="/ru/people/"> Сотрудники </a></li>
+              <li><a href="/ru/publications/"> Публикации </a></li>
+              <li><a href="/ru/grants/"> Гранты </a></li>
+              <li><a href="/ru/projects/"> Проекты</a></li>
+              <li><a href="/ru/links/"> Полезные ссылки</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      Новости
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/ru/seminars/"> Семинары </a></li>
+                      <li><a href="/ru/protections/"> Защиты </a></li>
+                      <li><a href="/ru/events/"> События </a></li>
+                  </ul>
+              </li>
+              <li><a href="/ru/contacts/"> Контакты </a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+                        <img src="static/flag_ru.png" title="Russian">
+
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu lang">
+                    <form action="/i18n/setlang/" method="post">
+                    <input type='hidden' name='csrfmiddlewaretoken' value='iIYOeyO1M7LF7RLfKkzVivwzyMV1VU9rQDOZqdm8zfPusl6kAEeWF8ENNsg75vjg' />
+
+                        <li>
+                            <button type="submit"
+                                name="language"
+                                style="border: none; padding: 5px; background: none;"
+                                value="ru"
+                                class="selected">
+
+                                    <img src="static/flag_ru.png" title="Russian">
+
+                            </button>
+                        </li>
+
+                        <li>
+                            <button type="submit"
+                                name="language"
+                                style="border: none; padding: 5px; background: none;"
+                                value="en"
+                                class="">
+
+                                    <img src="static/flag_en.png" title="English">
+
+                            </button>
+                        </li>
+
+                    </form>
+                </ul>
+              </li>
+
+                <li><a href="/ru/register/">Зарегистрироваться</a></li>
+                <li><a href="/ru/login/">Войти</a></li>
+
+          </ul>
+        </div>
+    </div>
+</nav>
+<style>
+    table_experiment {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+</style>
+
+  <div class="container">
+
+    <h1 class="page-header">Таблица экспериментов по внутренним волнам</h1>
+<table>
+    <tr><th>Источник</th><th>Схема эксперимента</th><th>Размеры установки</th><th>Приборы</th><th>Научный центр</th><th>Начальные параметры задачи</th><th>Измеряемые параметры</th><th>Tип эксперимента</th><th>Конфигурация жидкости</th></tr>
+{% for el in table_experiment %}
+    <div>
+        <tr><th>{{el.source}}</th><th><img src="/media/{{el.experiment_scheme}}" height='150' width='200'></th><th>{{el.measurements}}</th><th>{{el.appliance}}</th><th>{{el.places}}</th><th>{{el.measurable.measurable_value}}</th><th>{{el.measured_param}}</th><th>{{el.effects}}</th><th>{{el.configurate_liquid}}</th></tr>
+    </div>
+{% endfor %}
+</table>
+</div>
+<br>
+<footer class="container-fluid text-center">
+  <p>Лаборатория моделирования природных и техногенных катастроф НГТУ им. Р.Е. Алексеева © 2017 - 2021 </p>
+</footer>
+  </body>
+</html>

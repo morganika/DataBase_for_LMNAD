@@ -29,6 +29,7 @@ class ExpirementAdmin(admin.ModelAdmin):
     def applience_names(self, obj):
         a = obj.appliance.values_list('appliances_model')
         return list(chain.from_iterable(a))
+    applience_names.short_description = 'Приборы'
 
     def get_image(self, obj):
         return mark_safe(
@@ -41,11 +42,12 @@ class ExpirementAdmin(admin.ModelAdmin):
     def measurable_names(self, obj):
         a = obj.measurable.values_list('measurable_parametrs', 'measurable_value')
         return list(chain.from_iterable(a))
+    measurable_names.short_description = 'Начальные параметры'
 
-    list_display = ('source', 'get_image', 'applience_names', 'measurements', 'places', 'measurable_names', 'configurate_liquid', 'effects')
+    list_display = ('source', 'get_image', 'effects', 'applience_names', 'measurements', 'places', 'measured_param', 'measurable_names', 'configurate_liquid')
     list_display_links = ('source',)
     list_filter = ('configurate_liquid', 'effects', 'measurable__measurable_parametrs',)
-    search_fields = ('configurate_liquid', 'effects', 'appliance__appliances_model', 'measurable__measurable_value',)
+    search_fields = ('configurate_liquid', 'effects', 'appliance__appliances_model', 'measurable__measurable_value','measured_param')
 
 
 admin.site.register(Source, SourceAdmin)
